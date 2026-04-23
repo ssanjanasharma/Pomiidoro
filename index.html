@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="tomato">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomiidoro 🍅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating background blobs -->
+    <div class="bg-blob blob1"></div>
+    <div class="bg-blob blob2"></div>
+    <div class="bg-blob blob3"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-emoji">🍅</span>
+            <span class="brand-name">Pomiidoro :D</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-container">
+
+        <!-- Mode Tabs -->
+        <div class="mode-tabs">
+            <button class="mode-btn active" data-mode="pomodoro">🍅 Pomodoro</button>
+            <button class="mode-btn" data-mode="short">☕ Short Break</button>
+            <button class="mode-btn" data-mode="long">🌙 Long Break</button>
+        </div>
+
+        <!-- Timer Card -->
+        <div class="timer-card">
+            <div class="mascot-area">
+                <div class="mascot" id="mascot">🍅</div>
+                <div class="mascot-speech" id="mascotSpeech">Let's focus! You got this~ 💪</div>
+            </div>
+
+            <div class="timer-display">
+                <span id="timerDisplay">25:00</span>
+            </div>
+
+            <div class="progress-ring-wrap">
+                <svg class="progress-ring" viewBox="0 0 120 120">
+                    <circle class="progress-bg" cx="60" cy="60" r="54" />
+                    <circle class="progress-fill" id="progressCircle" cx="60" cy="60" r="54" />
+                </svg>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="ctrl-btn" id="resetBtn" title="Reset">↺</button>
+                <button class="ctrl-btn play-btn" id="startPauseBtn">▶ Start</button>
+                <button class="ctrl-btn" id="skipBtn" title="Skip">⏭</button>
+            </div>
+
+            <!-- Session counter -->
+            <div class="session-info">
+                <span class="session-label">Session</span>
+                <div class="session-dots" id="sessionDots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel">
+            <h3 class="settings-title">⚙️ Customize</h3>
+
+            <div class="settings-grid">
+                <div class="setting-item">
+                    <label>🍅 Pomodoro (min)</label>
+                    <div class="number-input">
+                        <button class="num-btn" onclick="changeTime('pomodoro', -1)">−</button>
+                        <input type="number" id="pomodoroTime" value="25" min="1" max="60" />
+                        <button class="num-btn" onclick="changeTime('pomodoro', 1)">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label>☕ Short Break (min)</label>
+                    <div class="number-input">
+                        <button class="num-btn" onclick="changeTime('short', -1)">−</button>
+                        <input type="number" id="shortTime" value="5" min="1" max="30" />
+                        <button class="num-btn" onclick="changeTime('short', 1)">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label>🌙 Long Break (min)</label>
+                    <div class="number-input">
+                        <button class="num-btn" onclick="changeTime('long', -1)">−</button>
+                        <input type="number" id="longTime" value="15" min="1" max="60" />
+                        <button class="num-btn" onclick="changeTime('long', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Selection -->
+            <div class="theme-section">
+                <h4 class="theme-title">🎨 Pick a Theme</h4>
+                <div class="theme-grid">
+                    <button class="theme-btn active" data-theme="tomato" title="Tomato">
+                        <span class="theme-emoji">🍅</span>
+                        <span>Tomato</span>
+                    </button>
+                    <button class="theme-btn" data-theme="froggie" title="Froggie">
+                        <span class="theme-emoji">🐸</span>
+                        <span>Froggie</span>
+                    </button>
+                    <button class="theme-btn" data-theme="bunny" title="Bunny">
+                        <span class="theme-emoji">🐰</span>
+                        <span>Bunny</span>
+                    </button>
+                    <button class="theme-btn" data-theme="bear" title="Bear">
+                        <span class="theme-emoji">🐻</span>
+                        <span>Bear</span>
+                    </button>
+                    <button class="theme-btn" data-theme="melon" title="Melon">
+                        <span class="theme-emoji">🍈</span>
+                        <span>Melon</span>
+                    </button>
+                    <button class="theme-btn" data-theme="valentine" title="Valentine">
+                        <span class="theme-emoji">💖</span>
+                        <span>Love</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Completion Toast -->
+    <div class="toast" id="toast">
+        <span id="toastMsg">🎉 Session complete!</span>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p class="footer-sub">© 2026 Pomiidoro · Stay focused, stay adorable 🌸</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

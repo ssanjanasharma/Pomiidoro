@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="tomato">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ – Pomiidoro 🍅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-blob blob1"></div>
+    <div class="bg-blob blob2"></div>
+    <div class="bg-blob blob3"></div>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-emoji">🍅</span>
+            <span class="brand-name">Pomiidoro :D</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="faq.html" class="nav-link active">FAQ</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-content">
+        <div class="page-hero">
+            <div class="page-mascot">🍅</div>
+            <h1 class="page-title">Frequently Asked Questions</h1>
+            <p class="page-subtitle">Got questions? We've got cute answers~ 💬</p>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>🍅 What is the Pomodoro Technique?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo. You work for
+                        25 minutes (one "pomodoro"), then take a 5-minute short break. After 4 pomodoros, you take a
+                        longer 15-30 minute break. It helps maintain focus and prevent burnout! ✨</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>⏱️ Can I change the timer duration?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutely! Head to the Customize section on the home page. You can adjust the Pomodoro time
+                        (default 25 min), Short Break (default 5 min), and Long Break (default 15 min) to whatever works
+                        best for you~ 🎯</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>🎨 How do I change the theme?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>In the Customize panel on the home page, scroll down to "Pick a Theme". You can choose from
+                        Tomato 🍅, Froggie 🐸, Bunny 🐰, Bear 🐻, Melon 🍈, or Valentine 💖. Each theme changes the
+                        whole color palette of the app!</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>🔔 Will I hear a sound when the timer ends?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! Pomiidoro plays a soft notification sound and shows a toast message when your session ends,
+                        so you don't have to stare at the screen the whole time. Just focus on your work~ 🎵</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>📊 What are the session dots?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>The four dots below the timer represent your progress through one full Pomodoro cycle (4
+                        sessions). Each time you complete a Pomodoro, a dot fills up. After 4 dots (one full cycle), you
+                        earn a long break! 🎉</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>💾 Does Pomiidoro save my settings?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Your theme and custom timer settings are saved automatically in your browser's local storage, so
+                        they'll be there the next time you visit! No account needed 🌟</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>📱 Does it work on mobile?</span>
+                    <span class="faq-arrow">▾</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! Pomiidoro is fully responsive and works beautifully on phones and tablets. Study anywhere,
+                        anytime~ 📚✨</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="page-footer-link">
+            <a href="index.html" class="back-btn">🍅 Back to Timer</a>
+        </div>
+    </main>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+        // apply saved theme
+        const saved = localStorage.getItem('pomiidoro-theme');
+        if (saved) document.documentElement.setAttribute('data-theme', saved);
+    </script>
+</body>
+
+</html>
